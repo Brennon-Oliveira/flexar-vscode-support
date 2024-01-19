@@ -5,6 +5,10 @@ import (
 	"runtime"
 )
 
+type Pessoa struct {
+	
+}
+
 
 func main() {
 	fmt.Println("Hello World")
