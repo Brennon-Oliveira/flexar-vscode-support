@@ -1,0 +1,79 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "flexar",
+	"scopeName": "source.fl",
+	"patterns": [
+		{
+            "name": "keyword.import.flexar",
+            "match": "\\bimport\\b"
+        },
+        {
+            "name": "import",
+            "patterns": [
+                {
+                    "name": "imports",
+					"begin": "\\bimport\\b",
+					"end": "(;)",
+					"match": "(\\buse\\b)?\\s*(((([a-zA-Z]\\w*)(\\.)?)*)(::[a-zA-Z]\\w*)?)((\\s*as\\s*)([a-zA-Z]\\w*))?(,|;)",
+					"captures": {
+						"1": {
+							"name": "constant"
+						},
+						"3": {
+							"patterns": [
+								{
+									"name":"entity.name.type.flexar",
+									"match": "([a-zA-Z]\\w*)"
+								},
+								{
+									"name":"punctuation.separator.flexar.flexar",
+									"match": "\\."
+								}
+							]
+						},
+						"7": {
+							"patterns": [
+								{
+									"name":"entity.name.function.flexar",
+									"match": "([a-zA-Z]\\w*)"
+								},
+								{
+									"name":"punctuation.definition.keyword.flexar",
+									"match": "::"
+								}
+							]
+						},
+						"9": {
+							"name": "keyword.as.flexar"
+						},
+						"10": {
+							"name": "entity.name.alias.flexar"
+						},
+						"11": {
+							"patterns": [
+								{
+									"name":"punctuation.separator.flexar",
+									"match": ","
+								},
+								{
+									"name":"punctuation.terminator.flexar",
+									"match": ";"
+								}
+							]
+						}		
+					}
+                }
+            ]
+        }
+	],
+	"repository": {
+		"name": {
+			"patterns": [
+				{
+					"name": "entity.name.import.flexar",
+					"match": "([a-zA-Z]\\w*)"
+				}
+			]
+		}
+	}
+}
