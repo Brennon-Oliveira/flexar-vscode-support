@@ -3,77 +3,85 @@
 	"name": "flexar",
 	"scopeName": "source.fl",
 	"patterns": [
-		{
-            "name": "keyword.import.flexar",
-            "match": "\\bimport\\b"
-        },
         {
-            "name": "import",
-            "patterns": [
-                {
-                    "name": "imports",
-					"begin": "\\bimport\\b",
-					"end": "(;)",
-					"match": "(\\buse\\b)?\\s*(((([a-zA-Z]\\w*)(\\.)?)*)(::[a-zA-Z]\\w*)?)((\\s*as\\s*)([a-zA-Z]\\w*))?(,|;)",
-					"captures": {
-						"1": {
-							"name": "constant"
+			"begin": "\\b(import)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.edge.flexar"
+				}
+			},
+			"end": "(?!\\G)",
+			"endCaptures": {
+				"1": {
+					"name": "constant"
+				}
+			},
+			"match": "(\\buse\\b)?\\s*(((([a-zA-Z]\\w*)(\\.)?)*)(::[a-zA-Z]\\w*)?)((\\s*as\\s*)([a-zA-Z]\\w*))?(,)",
+			"captures": {
+				"1": {
+					"name": "entity.name.function.edge.flexar"
+				},
+				"3": {
+					"patterns": [
+						{
+							"name":"entity.name.package.go",
+							"match": "([a-zA-Z]\\w*)"
 						},
-						"3": {
-							"patterns": [
-								{
-									"name":"entity.name.type.flexar",
-									"match": "([a-zA-Z]\\w*)"
-								},
-								{
-									"name":"punctuation.separator.flexar.flexar",
-									"match": "\\."
-								}
-							]
+						{
+							"name":"punctuation.separator.flexar.flexar",
+							"match": "\\."
+						}
+					]
+				},
+				"7": {
+					"patterns": [
+						{
+							"name":"entity.name.function.flexar",
+							"match": "([a-zA-Z]\\w*)"
 						},
-						"7": {
-							"patterns": [
-								{
-									"name":"entity.name.function.flexar",
-									"match": "([a-zA-Z]\\w*)"
-								},
-								{
-									"name":"punctuation.definition.keyword.flexar",
-									"match": "::"
-								}
-							]
+						{
+							"name":"punctuation.definition.keyword.flexar",
+							"match": "::"
+						}
+					]
+				},
+				"9": {
+					"name": "punctuation.definition.keyword.flexar"
+				},
+				"10": {
+					"name": "entity.name.package.go"
+				},
+				"11": {
+					"patterns": [
+						{
+							"name":"punctuation.separator.flexar",
+							"match": ","
 						},
-						"9": {
-							"name": "keyword.as.flexar"
-						},
-						"10": {
-							"name": "entity.name.alias.flexar"
-						},
-						"11": {
-							"patterns": [
-								{
-									"name":"punctuation.separator.flexar",
-									"match": ","
-								},
-								{
-									"name":"punctuation.terminator.flexar",
-									"match": ";"
-								}
-							]
-						}		
-					}
-                }
-            ]
-        }
+						{
+							"name":"punctuation.terminator.flexar",
+							"match": ";"
+						}
+					]
+				}		
+			}
+		},
+		{
+			"name": "namespace",
+			"match": "(\\bnamespace\\b)\\s*([a-zA-Z]\\w*)\\s*(;)",
+			"captures": {
+				"1": {
+					"name": "entity.name.function.edge.flexar"
+				},
+				"2": {
+					"name": "entity.name.package.go"
+				},
+				"3": {
+					"name": "punctuation.terminator.flexar"
+				}
+			}
+		}
 	],
 	"repository": {
-		"name": {
-			"patterns": [
-				{
-					"name": "entity.name.import.flexar",
-					"match": "([a-zA-Z]\\w*)"
-				}
-			]
-		}
+		
 	}
 }
