@@ -44,7 +44,7 @@
 
 		"ENUM": {
 			"match": "enum",
-			"name": "keyword.control.enum.flexar"
+			"name": "keyword.other.struct.flexar"
 		},
 		"STRUCT": {
 			"match": "struct",
@@ -280,7 +280,7 @@
 			"match": "[[:alpha:]_]\\w*",
 			"name": "variable.name.flexar"
 		},
-		"FUNCTION-NAME": {
+		"OBJECT-NAME": {
 			"match": "[[:alpha:]_]\\w*",
 			"name": "entity.name.function"
 		},
@@ -585,7 +585,7 @@
 						"0": {
 							"patterns":[
 								{
-									"include": "#FUNCTION-NAME"
+									"include": "#OBJECT-NAME"
 								}
 							]
 						}
@@ -639,6 +639,9 @@
 				},
 				{
 					"include": "#struct"
+				},
+				{
+					"include": "#enum"
 				}
 			]
 		},
@@ -671,8 +674,16 @@
 					"include": "#EXTENDS"
 				},
 				{
-					"match": "[[:alpha:]_]\\w*\\s*\\{",
-					"name": "keyword.type.entity.flexar"
+					"match": "([[:alpha:]_]\\w*)\\s*\\{",
+					"captures": {
+						"1": {
+							"patterns":[
+								{
+									"include": "#OBJECT-NAME"
+								}
+							]
+						}
+					}
 				},
 				{
 					"include": "#DOT"
@@ -721,6 +732,80 @@
 			"patterns":[
 				{
 					"include": "#type"
+				}
+			]
+		},
+		"enum":{
+			"begin": "enum\\s*",
+			"beginCaptures": {
+				"0": {
+					"patterns":[
+						{
+							"include": "#ENUM"
+						}
+					]
+				}
+			},
+			"patterns":[
+				{
+					"include": "#enum-declaration"
+				},
+				{
+					"include": "#enum-body"
+				}
+			],
+			"end": "\\}"
+		},
+		"enum-declaration":{
+			"name": "enum-declaration.flexar",
+			"match": "([[:alpha:]_]\\w*)\\s*\\{",
+			"captures": {
+				"1": {
+					"patterns":[
+						{
+							"include": "#OBJECT-NAME"
+						}
+					]
+				}
+			}
+		},
+		"enum-body":{
+			"name": "enum-body.flexar",
+			"patterns":[
+				{
+					"include": "#enum-item"
+				}
+			]
+		},
+		"enum-item":{
+			"name": "enum-item.flexar",
+			"match": "([[:alpha:]_]\\w*)\\s*(?:(=)\\s*([\"a-zA-Z0-9]+))?(,|;)",
+			"captures": {
+				"1": {
+					"patterns":[
+						{
+							"include": "#NAME"
+						}
+					]
+				},
+				"2": {
+					"patterns":[
+						{
+							"include": "#ASSING"
+						}
+					]
+				},
+				"3": {
+					"patterns":[
+						{
+							"include": "#primitive-value"
+						}
+					]
+				}
+			},
+			"patterns":[
+				{
+					"include": "#COMMA"
 				}
 			]
 		},
@@ -809,6 +894,35 @@
 				{
 					"match": "\\/\\/.*$",
 					"name": "comment.line.double-slash.flexar"
+				}
+			]
+		},
+		"primitive-value":{
+			"patterns":[
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#number"
+				},
+				{
+					"include": "#DYN"
+				}
+			]
+		},
+		"string": {
+			"patterns": [
+				{
+					"match": "\".*\"",
+					"name": "string.quoted.double.flexar"
+				}
+			]
+		},
+		"number": {
+			"patterns": [
+				{
+					"match": "[0-9]+",
+					"name": "constant.numeric.flexar"
 				}
 			]
 		}
