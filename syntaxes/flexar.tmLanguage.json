@@ -4,498 +4,804 @@
 	"scopeName": "source.fl",
 	"patterns": [
 		{
-			"include": "#string"
-		},
-		{
-			"include": "#imports"
-		},
-		{
-			"include": "#namespace"
-		},
-		{
-			"include": "#class"
-		},
-		{
-			"include": "#interface"
-		},
-		{
-			"include": "#enum"
-		},
-		{
-			"include": "#enum-values"
-		},
-		{
-			"include": "#struct"
-		},
-		{
-			"include": "#func"
-		},
-		{
-			"include": "#class-body"
+			"include": "#program"
 		}
 	],
 	"repository": {
-		"string": {
-			"begin": "\"",
-			"end": "\"",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.begin.flexar"
-				}
-			},
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.string.end.flexar"
-				}
-			},
-			"patterns": [
+		"LEXER": null,
+		"IMPORT": {
+			"match": "import",
+			"name": "keyword.control.import.flexar"
+		},
+		"NAMESPACE": {
+			"match": "namespace",
+			"name": "variable.other.object"
+		},
+		"EXPORT": {
+			"match": "export",
+			"name": "keyword.control.export.flexar"
+		},
+		"USE":{
+			"match": "use",
+			"name": "keyword.control.use.flexar"
+		},
+		"AS": {
+			"match": "as",
+			"name": "keyword.control.as.flexar"
+		},
+		"BOOLEAN": {
+			"match": "true|false",
+			"name": "keyword.type.boolean.flexar"
+		},
+		"THIS": {
+			"match": "this",
+			"name": "keyword.variable.this.flexar"
+		},
+		"NEW": {
+			"match": "new",
+			"name": "keyword.control.new.flexar"
+		},
+
+		"ENUM": {
+			"match": "enum",
+			"name": "keyword.control.enum.flexar"
+		},
+		"STRUCT": {
+			"match": "struct",
+			"name": "keyword.other.struct.flexar"
+		},
+		
+		"FUNC": {
+			"match": "func",
+			"name": "keyword.function.flexar"
+		},
+
+		"CLASS": {
+			"match": "class",
+			"name": "keyword.other.class.flexar"
+		},
+		"INTERFACE": {
+			"match": "interface",
+			"name": "keyword.other.interface.flexar"
+		},
+		"EXTENDS": {
+			"match": "extends",
+			"name": "keyword.control.extends.flexar"
+		},
+		"IMPLEMENTS": {
+			"match": "implements",
+			"name": "keyword.control.implements.flexar"
+		},
+		"PUBLIC": {
+			"match": "public",
+			"name": "keyword.control.public.flexar"
+		},
+		"PRIVATE": {
+			"match": "private",
+			"name": "keyword.control.private.flexar"
+		},
+		"PROTECTED": {
+			"match": "protected",
+			"name": "keyword.control.protected.flexar"
+		},
+		"STATIC": {
+			"match": "static",
+			"name": "keyword.control.static.flexar"
+		},
+		"ABSTRACT": {
+			"match": "abstract",
+			"name": "keyword.control.abstract.flexar"
+		},
+		"FINAL": {
+			"match": "final",
+			"name": "keyword.control.final.flexar"
+		},
+		"OVERRIDE": {
+			"match": "override",
+			"name": "keyword.control.override.flexar"
+		},
+
+		"IF": {
+			"match": "if",
+			"name": "keyword.control.if.flexar"
+		},
+		"ELSE": {
+			"match": "else",
+			"name": "keyword.control.else.flexar"
+		},
+		"ELIF": {
+			"match": "elif",
+			"name": "keyword.control.elif.flexar"
+		},
+		"SWITCH": {
+			"match": "switch",
+			"name": "keyword.control.switch.flexar"
+		},
+		"CASE": {
+			"match": "case",
+			"name": "keyword.control.case.flexar"
+		},
+		"DEFAULT": {
+			"match": "default",
+			"name": "keyword.control.default.flexar"
+		},
+		"WHILE": {
+			"match": "while",
+			"name": "keyword.control.while.flexar"
+		},
+		"DO": {
+			"match": "do",
+			"name": "keyword.control.do.flexar"
+		},
+		"FOR": {
+			"match": "for",
+			"name": "keyword.control.for.flexar"
+		},
+		"BREAK": {
+			"match": "break",
+			"name": "keyword.control.break.flexar"
+		},
+		"CONTINUE": {
+			"match": "continue",
+			"name": "keyword.control.continue.flexar"
+		},
+		"RETURN": {
+			"match": "return",
+			"name": "keyword.control.return.flexar"
+		},
+		"CONST": {
+			"match": "const",
+			"name": "keyword.control.const.flexar"
+		},
+		"READONLY": {
+			"match": "readonly",
+			"name": "keyword.control.readonly.flexar"
+		},
+		"IN": {
+			"match": "in",
+			"name": "keyword.control.in.flexar"
+		},
+		"IS": {
+			"match": "is",
+			"name": "keyword.control.is.flexar"
+		},
+
+		"TRY": {
+			"match": "try",
+			"name": "keyword.control.try.flexar"
+		},
+		"CATCH": {
+			"match": "catch",
+			"name": "keyword.control.catch.flexar"
+		},
+		"FINALLY": {
+			"match": "finally",
+			"name": "keyword.control.finally.flexar"
+		},
+
+		"INT": {
+			"match": "int",
+			"name": "keyword.type.int.flexar"
+		},
+		"INT8": {
+			"match": "int8",
+			"name": "keyword.type.int8.flexar"
+		},
+		"INT16": {
+			"match": "int16",
+			"name": "keyword.type.int16.flexar"
+		},
+		"INT32": {
+			"match": "int32",
+			"name": "keyword.type.int32.flexar"
+		},
+		"INT64": {
+			"match": "int64",
+			"name": "keyword.type.int64.flexar"
+		},
+		"UINT": {
+			"match": "uint",
+			"name": "keyword.type.uint.flexar"
+		},
+		"UINT8": {
+			"match": "uint8",
+			"name": "keyword.type.uint8.flexar"
+		},
+		"UINT16": {
+			"match": "uint16",
+			"name": "keyword.type.uint16.flexar"
+		},
+		"UINT32": {
+			"match": "uint32",
+			"name": "keyword.type.uint32.flexar"
+		},
+		"UINT64": {
+			"match": "uint64",
+			"name": "keyword.type.uint64.flexar"
+		},
+		"FLOAT": {
+			"match": "float",
+			"name": "keyword.type.float.flexar"
+		},
+		"FLOAT32": {
+			"match": "float32",
+			"name": "keyword.type.float32.flexar"
+		},
+		"FLOAT64": {
+			"match": "float64",
+			"name": "keyword.type.float64.flexar"
+		},
+		"BOOL": {
+			"match": "bool",
+			"name": "keyword.type.bool.flexar"
+		},
+		"CHAR": {
+			"match": "char",
+			"name": "keyword.type.char.flexar"
+		},
+		"STRING": {
+			"match": "string",
+			"name": "keyword.type.string.flexar"
+		},
+		"INF": {
+			"match": "INF",
+			"name": "keyword.type.inf.flexar"
+		},
+		"TUPLE": {
+			"match": "tuple",
+			"name": "keyword.type.tuple.flexar"
+		},
+		"MAP": {
+			"match": "map",
+			"name": "keyword.type.map.flexar"
+		},
+		"ERROR": {
+			"match": "error",
+			"name": "keyword.type.error.flexar"
+		},
+		"NULL": {
+			"match": "null",
+			"name": "keyword.type.null.flexar"
+		},
+		"ANY": {
+			"match": "any",
+			"name": "keyword.type.any.flexar"
+		},
+		"DYN": {
+			"match": "dyn",
+			"name": "keyword.type.dyn.flexar"
+		},
+
+		"DISCARD": {
+			"match": "_",
+			"name": "keyword.variable.discard.flexar"
+		},
+		"NAME": {
+			"match": "[[:alpha:]_]\\w*",
+			"name": "variable.name.flexar"
+		},
+		"FUNCTION-NAME": {
+			"match": "[[:alpha:]_]\\w*",
+			"name": "entity.name.function"
+		},
+
+        "COMMA":{
+			"match": ",",
+			"name": "punctuation.comma.flexar"
+		},
+		"DOT":{
+			"match": "\\.",
+			"name": "punctuation.dot.flexar"
+		},
+		"COLON":{
+			"match": ":",
+			"name": "punctuation.colon.flexar"
+		},
+		"DOUBLE_COLON":{
+			"match": "::",
+			"name": "punctuation.double-colon.flexar"
+		},
+		"ARROW":{
+			"match": "->",
+			"name": "punctuation.arrow.flexar"
+		},
+		"SEMICOLON":{
+			"match": ";",
+			"name": "punctuation.semicolon.flexar"
+		},
+		"OPEN_PAREN":{
+			"match": "\\(",
+			"name": "punctuation.open-paren.flexar"
+		},
+		"CLOSE_PAREN":{
+			"match": "\\)",
+			"name": "punctuation.close-paren.flexar"
+		},
+		"OPEN_BRACE":{
+			"match": "\\{",
+			"name": "punctuation.open-brace.flexar"
+		},
+		"CLOSE_BRACE":{
+			"match": "\\}",
+			"name": "punctuation.close-brace.flexar"
+		},
+		"OPEN_BRACKET":{
+			"match": "\\[",
+			"name": "punctuation.open-bracket.flexar"
+		},
+		"CLOSE_BRACKET":{
+			"match": "\\]",
+			"name": "punctuation.close-bracket.flexar"
+		},
+
+		"ASSING": {
+			"match": "=",
+			"name": "punctuation.assing.flexar"
+		},
+		"PLUS_ASSIGN": {
+			"match": "\\+=",
+			"name": "punctuation.plus-assign.flexar"
+		},
+		"MINUS_ASSIGN": {
+			"match": "-=",
+			"name": "punctuation.minus-assign.flexar"
+		},
+		"STAR_ASSIGN": {
+			"match": "\\*=",
+			"name": "punctuation.star-assign.flexar"
+		},
+		"MODULE_ASSIGN": {
+			"match": "%=",
+			"name": "punctuation.module-assign.flexar"
+		},
+		"DIV_ASSIGN": {
+			"match": "/=",
+			"name": "punctuation.div-assign.flexar"
+		},
+		"EXP_ASSIGN": {
+			"match": "\\*\\*=",
+			"name": "punctuation.exp-assign.flexar"
+		},
+		"AND_ASSIGN": {
+			"match": "&=",
+			"name": "punctuation.and-assign.flexar"
+		},
+		"OR_ASSIGN": {
+			"match": "\\|=",
+			"name": "punctuation.or-assign.flexar"
+		},
+		"XOR_ASSIGN": {
+			"match": "\\^=",
+			"name": "punctuation.xor-assign.flexar"
+		},
+		"SHL_ASSIGN": {
+			"match": "<<=",
+			"name": "punctuation.shl-assign.flexar"
+		},
+		"SHR_ASSIGN": {
+			"match": ">>=",
+			"name": "punctuation.shr-assign.flexar"
+		},
+		"INF_ASSIGN": {
+			"match": ":=",
+			"name": "punctuation.inf-assign.flexar"
+		},
+
+		"EQUAL": {
+			"match": "==",
+			"name": "punctuation.equal.flexar"
+		},
+		"NOT_EQUAL": {
+			"match": "!=",
+			"name": "punctuation.not-equal.flexar"
+		},
+		"LESS": {
+			"match": "<",
+			"name": "punctuation.less.flexar"
+		},
+		"LESS_EQUAL": {
+			"match": "<=",
+			"name": "punctuation.less-equal.flexar"
+		},
+		"GREATER": {
+			"match": ">",
+			"name": "punctuation.greater.flexar"
+		},
+		"GREATER_EQUAL": {
+			"match": ">=",
+			"name": "punctuation.greater-equal.flexar"
+		},
+
+		"AND": {
+			"match": "&&",
+			"name": "punctuation.and.flexar"
+		},
+		"OR": {
+			"match": "\\|\\|",
+			"name": "punctuation.or.flexar"
+		},
+		"XOR": {
+			"match": "\\^\\^",
+			"name": "punctuation.xor.flexar"
+		},
+		"NOT": {
+			"match": "!",
+			"name": "punctuation.not.flexar"
+		},
+
+		"BIT_AND": {
+			"match": "&",
+			"name": "punctuation.bit-and.flexar"
+		},
+		"BIT_OR": {
+			"match": "\\|",
+			"name": "punctuation.bit-or.flexar"
+		},
+		"BIT_XOR": {
+			"match": "\\^",
+			"name": "punctuation.bit-xor.flexar"
+		},
+		"BIT_NOT": {
+			"match": "~",
+			"name": "punctuation.bit-not.flexar"
+		},
+		"SHL": {
+			"match": "<<",
+			"name": "punctuation.shl.flexar"
+		},
+		"SHR": {
+			"match": ">>",
+			"name": "punctuation.shr.flexar"
+		},
+
+		"PLUS": {
+			"match": "+",
+			"name": "punctuation.plus.flexar"
+		},
+		"MINUS": {
+			"match": "-",
+			"name": "punctuation.minus.flexar"
+		},
+		"STAR": {
+			"match": "\\*",
+			"name": "punctuation.star.flexar"
+		},
+		"EXP": {
+			"match": "\\*\\*",
+			"name": "punctuation.exp.flexar"
+		},
+		"MODULE": {
+			"match": "%",
+			"name": "punctuation.module.flexar"
+		},
+		"DIV": {
+			"match": "/",
+			"name": "punctuation.div.flexar"
+		},
+		"INC": {
+			"match": "++",
+			"name": "punctuation.inc.flexar"
+		},
+		"DEC": {
+			"match": "--",
+			"name": "punctuation.dec.flexar"
+		},
+
+		"QUESTION": {
+			"match": "?",
+			"name": "punctuation.question.flexar"
+		},
+		"RANGE": {
+			"match": "\\.\\.",
+			"name": "punctuation.range.flexar"
+		},
+		"SPREAD": {
+			"match": "\\.\\.\\.",
+			"name": "punctuation.spread.flexar"
+		},
+
+		"INT-NUM": {
+			"match": "[0-9]+",
+			"name": "constant.numeric.flexar"
+		},
+
+		"FLOAT-NUM": {
+			"match": "[0-9]+\\.[0-9]+f",
+			"name": "constant.numeric.float.flexar"
+		},
+
+		"PARSER": null,
+		"program":{
+			"patterns":[
 				{
-					"name": "string.tm",
-					"match": "[^\"]"
+					"include": "#comment"
+				},
+				{
+					"include": "#import-group"
+				},
+				{
+					"include": "#namespace"
+				},
+				{
+					"include": "#program-rule"
+				
 				}
 			]
 		},
-		"imports": {
-			"begin": "\\b(import)\\s+",
+		"import-group":{
+			"begin": "import",
 			"beginCaptures": {
-				"1": {
-					"name": "constant"
+				"0": {
+					"patterns":[
+						{
+							"include": "#IMPORT"
+						}
+					]
 				}
 			},
 			"end": ";",
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.terminator.flexar"
+					"patterns":[
+						{
+							"include": "#SEMICOLON"
+						}
+					]
 				}
 			},
 			"patterns":[
 				{
-					"name": "entity.name.function.edge.flexar",
-					"match": "\\b(use|as)\\b"
+					"include": "#IMPORT"
 				},
 				{
-					"match": "(::)([a-zA-Z]\\w*)",
-					"captures": {
-						"1": {
-							"name": "punctuation.separator.flexar"
-						},
-						"2": {
-							"name": "entity.name.function.flexar"
+					"include": "#import-rule"
+				}
+			]
+		},
+		"import-rule": {
+			"patterns":[
+				{
+					"include": "#USE"
+				},
+				{
+					"include": "#AS"
+				},
+				{
+					"include": "#NAME"
+				},
+				{
+					"begin": "::",
+					"beginCaptures": {
+						"0": {
+							"patterns":[
+								{
+									"include": "#DOUBLE_COLON"
+								}
+							]
+						}
+					},
+					"end": "[[:alpha:]_]\\w*",
+					"endCaptures": {
+						"0": {
+							"patterns":[
+								{
+									"include": "#FUNCTION-NAME"
+								}
+							]
 						}
 					}
 				},
 				{
-					"name": "entity.name.package.go",
-					"match": "[a-zA-Z]\\w*"
+					"include": "#COMMA"
 				},
 				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
+					"include": "#DOT"
 				}
-				
 			]
 		},
 		"namespace": {
-			"begin": "\\b(namespace)\\s+",
+			"begin": "namespace",
 			"beginCaptures": {
-				"1": {
-					"name": "constant"
+				"0": {
+					"patterns":[
+						{
+							"include": "#NAMESPACE"
+						}
+					]
 				}
 			},
 			"end": ";",
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.terminator.flexar"
-				}
-			},
-			"patterns":[
-				{
-					"match": "([a-zA-Z]\\w*)",
-					"captures": {
-						"1": {
-							"name": "entity.name.package.go"
-						}
-					}
-				},
-				{
-					"match": "(\\.)([a-zA-Z]\\w*)",
-					"captures": {
-						"1": {
-							"name": "punctuation.separator.flexar"
-						},
-						"2": {
-							"name": "entity.name.package.go"
-						}
-					}
-				}
-			]
-			
-		},
-		"class": {
-			"begin": "(\\b(?:export|abstract)\\b)?\\s*\\b(class)\\b\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.modifier"
-				},
-				"2": {
-					"name": "storage.type.class"
-				}
-			},
-			"end": "(?=\\{)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.begin.flexar"
-				}
-			},
-			"patterns":[
-				{
-					"name": "storage.modifier",
-					"match": "\\b(?:extends|implements)\\b"
-				},
-				{
-					"name": "entity.name.type.class",
-					"match": "[a-zA-Z]\\w*"
-				},
-				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
-				}
-			]
-		},
-		"interface":{
-			"begin": "(?=(\\b(?:export)\\b)?\\s*\\b(interface)\\b)",
-			"end": "(?=\\{)",
-			"patterns": [
-				{
-					"include": "#interface-declaration"
-				},
-				{
-					"include": "#interface-body"
-				}
-			]
-		},
-		"interface-declaration":{
-			"begin": "(\\b(?:export)\\b)?\\s*\\b(interface)\\b\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.modifier"
-				},
-				"2": {
-					"name": "storage.type.class"
-				}
-			},
-			"end": "\\{",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.begin.flexar"
-				}
-			},
-			"patterns":[
-				{
-					"name": "storage.modifier",
-					"match": "\\b(?:extends)\\b"
-				},
-				{
-					"name": "entity.name.type.class",
-					"match": "[a-zA-Z]\\w*"
-				},
-				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
-				}
-			]
-		},
-		"interface-body":	{
-			"begin": "(?<=\\{)",
-			"end": "\\}",
-			"patterns":[
-				{
-					"include": "#interface-attr"
-				},
-				{
-					"include": "#interface-method"
-				}
-			]
-		},
-		"interface-attr": {
-			"match": "([a-zA-Z]\\w*)\\s*(:)\\s*([a-zA-Z]\\w*)",
-			"captures": {
-				"1": {
-					"name": "entity.name.type.class"
-				},
-				"2": {
-					"name": "punctuation.separator.flexar"
-				},
-				"3": {
-					"name": "entity.name.package.go"
-				}
-			}
-		},
-		"interface-method": {
-			"patterns":[
-				
-				{
-					"include": "#func-return-type"
-				},
-				{
-					"include": "#func-def"
-				},
-				{
-					"include": "#func-name"
-				},
-				{
-					"include": "#func-params"
-				},
-				{
-					"include": "#primitive-value"
-				}
-			]
-		},
-		"func-def":{
-			"match": "func",
-			"captures": {
-				"0": {
-					"name": "storage.type.class"
-				}
-			}
-		},
-		"func-name":{
-			"match": "([a-zA-Z]\\w*)",
-			"captures": {
-				"1": {
-					"name": "entity.name.function.flexar"
-				}
-			}
-		},
-		"func-params":{
-			"match": "(\\()([^\\)]*)(\\))",
-			"captures": {
-				"1": {
-					"name": "punctuation.section.class.begin.flexar"
-				},
-				"2": {
-					"patterns": [
-						{
-							"include": "#func-param"
-						}
-					]
-				},
-				"3": {
-					"name": "punctuation.section.class.begin.flexar"
-				}
-			}
-		},
-		"func-return-type": {
-			"match": "(?<=\\s*\\))\\s*([a-zA-Z]\\w*)",
-			"captures": {
-				"1": {
-					"name": "entity.name.type.class"
-				}
-			}
-		},
-		"func-param":{
-			"match": "([a-zA-Z]\\w*)\\s*(:)\\s*([a-zA-Z]\\w*)(?:(=)?([^,\\)]*))?(,)?",
-			"captures": {
-				"1": {
-					"name": "entity.name.type.class"
-				},
-				"2": {
-					"name": "punctuation.separator.flexar"
-				},
-				"3": {
-					"name": "entity.name.package.go"
-				},
-				"4": {
-					"name": "punctuation.separator.flexar"
-				},
-				"5": {
 					"patterns":[
 						{
-							"include": "#primitive-value"
+							"include": "#SEMICOLON"
 						}
 					]
-				},
-				"6": {
-					"name": "punctuation.separator.flexar"
-				}
-			}
-		},
-		"primitive-value":{
-			"match": "(=)\\s*((\\d+|dyn)|(\"[^\"]*\"))",
-			"captures": {
-				"1": {
-					"name": "punctuation.separator.flexar"
-				},
-				"3": {
-					"name": "constant.numeric"
-				},
-				"4": {
-					"name": "string"
-				}
-			}
-		},
-		"enum": {
-			"begin": "(\\b(?:export)\\b)?\\s*\\b(enum)\\b\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.modifier"
-				},
-				"2": {
-					"name": "storage.type.class"
-				}
-			},
-			"end": "(?=\\{)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.begin.flexar"
 				}
 			},
 			"patterns":[
 				{
-					"name": "entity.name.type.class",
-					"match": "[a-zA-Z]\\w*"
+					"include": "#NAMESPACE"
 				},
 				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
+					"include": "#NAME"
+				},
+				{
+					"include": "#DOT"
 				}
 			]
 		},
-		"enum-values": {
-			"begin": "(?<=enum.*)\\{",
-			"end": "\\}",
-			"patterns":[
+		"program-rule": {
+			"patterns": [
 				{
-					"name": "constant.other.enum",
-					"match": "[a-zA-Z]\\w*"
+					"include": "#EXPORT"
 				},
 				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
-				},
-				{
-					"match": "(=)\\s*((\\d+|dyn)|(\"[^\"]*\"))",
-					"captures": {
-						"1": {
-							"name": "punctuation.separator.flexar"
-						},
-						"3": {
-							"name": "constant.numeric"
-						},
-						"4": {
-							"name": "string"
-						}
-					}
+					"include": "#struct"
 				}
 			]
 		},
 		"struct": {
-			"begin": "(?=(\\b(?:export)\\b)?\\s*\\b(struct)\\b)",
-			"end": "(?=\\{)",
-			"patterns": [
-				{
-					"include": "#struct-declaration"
-				},
+			"begin": "struct\\s*",
+			"beginCaptures": {
+				"0": {
+					"patterns":[
+						{
+							"include": "#STRUCT"
+						}
+					]
+				}
+			},
+			"patterns":[
 				{
 					"include": "#struct-body"
-				}
-			]
-		},
-		"struct-declaration":{
-			"begin": "(\\b(?:export)\\b)?\\s*\\b(struct)\\b\\s+([a-zA-Z]\\w*)\\s*",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.modifier"
-				},
-				"2": {
-					"name": "storage.type.class"
-				},
-				"3":{
-					"name": "entity.name.type.class"
-				}
-			},
-			"patterns":[
-				{
-					"match": "extends\\s+",
-					"captures": {
-						"0": {
-							"name": "storage.modifier"
-						}
-					}	
 				},
 				{
-					"name": "entity.name.type.class",
-					"match": "[a-zA-Z]\\w*"
-				},
-				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
+					"include": "#struct-def"
 				}
+				
 			],
-			"end": "\\{",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.begin.flexar"
-				}
-			}
+			"end": "\\}"
 		},
-		"struct-body":	{
-			"begin": "(?<=\\{)",
-			"end": "\\}",
+		"struct-def": {
+			"end": "\\{",
 			"patterns":[
 				{
-					"include": "#struct-attr"
+					"include": "#EXTENDS"
+				},
+				{
+					"match": "[[:alpha:]_]\\w*\\s*\\{",
+					"name": "keyword.type.entity.flexar"
+				},
+				{
+					"include": "#DOT"
+				},
+				{
+					"include": "#COMMA"
 				}
 			]
 		},
-		"struct-attr": {
-			"match": "([a-zA-Z]\\w*)\\s*(:)\\s*([a-zA-Z]\\w*)",
-			"captures": {
+		"struct-body": {
+			"patterns":[
+				{
+					"include": "#var-typing"
+				}
+			]
+		},
+		"var-typing": {
+			"match": "([[:alpha:]_]\\w*)\\s*(:)\\s*([[:alpha:]_]\\w*)",
+			"captures":{
 				"1": {
-					"name": "entity.name.type.class"
+					"patterns":[
+						{
+							"include": "#NAME"
+						}
+					]
 				},
 				"2": {
-					"name": "punctuation.separator.flexar"
+					"patterns":[
+						{
+							"include": "#COLON"
+						}
+					]
 				},
 				"3": {
-					"name": "entity.name.package.go"
+					"patterns":[
+						{
+							"include": "#type"
+						}
+					]
 				}
 			}
 		},
-		"func": {
-			"begin": "(\\b(?:export)\\b)?\\s*\\b(func)\\b\\s+",
-			"beginCaptures": {
-				"1": {
-					"name": "storage.modifier"
-				},
-				"2": {
-					"name": "storage.type.class"
-				}
-			},
-			"end": "\\(",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.class.begin.flexar"
-				}
-			},
+		"type":{
 			"patterns":[
 				{
-					"name": "entity.name.type.class",
-					"match": "[a-zA-Z]\\w*"
+					"include": "#INT"
 				},
 				{
-					"name": "punctuation.separator.flexar",
-					"match": "[,|\\.]"
+					"include": "#INT8"
+				},
+				{
+					"include": "#INT16"
+				},
+				{
+					"include": "#INT32"
+				},
+				{
+					"include": "#INT64"
+				},
+				{
+					"include": "#UINT"
+				},
+				{
+					"include": "#UINT8"
+				},
+				{
+					"include": "#UINT16"
+				},
+				{
+					"include": "#UINT32"
+				},
+				{
+					"include": "#UINT64"
+				},
+				{
+					"include": "#FLOAT"
+				},
+				{
+					"include": "#FLOAT32"
+				},
+				{
+					"include": "#FLOAT64"
+				},
+				{
+					"include": "#BOOL"
+				},
+				{
+					"include": "#CHAR"
+				},
+				{
+					"include": "#STRING"
+				},
+				{
+					"include": "#INF"
+				},
+				{
+					"include": "#TUPLE"
+				},
+				{
+					"include": "#MAP"
+				},
+				{
+					"include": "#ERROR"
+				},
+				{
+					"include": "#NULL"
+				},
+				{
+					"include": "#ANY"
+				},
+				{
+					"include": "#DYN"
+				},
+				{
+					"match": "[[:alpha:]_]\\w*",
+					"name": "keyword.type.created.flexar"
+				},
+				{
+					"include": "#DOT"
 				}
 			]
 		},
-		"types":{
-			"match": "(\\b(?:int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|float|float32|float64|bool|char|string|inf|tuple|map|error|null|any|name)\\b)",
-			"captures": {
-				"1": {
-					"name": "constant.numeric"
+		"comment": {
+			"patterns": [
+				{
+					"match": "\\/\\/.*$",
+					"name": "comment.line.double-slash.flexar"
 				}
-			}
+			]
 		}
 	}
 }
