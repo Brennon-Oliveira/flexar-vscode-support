@@ -690,8 +690,9 @@
 			]
 		},
 		"var-typing": {
-			"match": "([[:alpha:]_]\\w*)\\s*(:)\\s*([[:alpha:]_]\\w*)",
-			"captures":{
+			"name": "variable.other.object",
+			"begin": "([[:alpha:]_]\\w*)\\s*(:)\\s*",
+			"beginCaptures":{
 				"1": {
 					"patterns":[
 						{
@@ -705,15 +706,23 @@
 							"include": "#COLON"
 						}
 					]
-				},
-				"3": {
+				}
+			},
+			"end": ";",
+			"endCaptures": {
+				"0": {
 					"patterns":[
 						{
-							"include": "#type"
+							"include": "#SEMICOLON"
 						}
 					]
 				}
-			}
+			},
+			"patterns":[
+				{
+					"include": "#type"
+				}
+			]
 		},
 		"type":{
 			"patterns":[
