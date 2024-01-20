@@ -61,7 +61,7 @@
 			"name": "keyword.other.class.flexar"
 		},
 		"INTERFACE": {
-			"match": "interface",
+			"match": "\\binterface\\b",
 			"name": "keyword.other.interface.flexar"
 		},
 		"EXTENDS": {
@@ -282,7 +282,11 @@
 		},
 		"OBJECT-NAME": {
 			"match": "[[:alpha:]_]\\w*",
-			"name": "entity.name.function"
+			"name": "keyword.type.new.flexar"
+		},
+		"ENTITY-NAME": {
+			"match": "[[:alpha:]_]\\w*",
+			"name": "entity.name."
 		},
 
         "COMMA":{
@@ -524,7 +528,6 @@
 				},
 				{
 					"include": "#program-rule"
-				
 				}
 			]
 		},
@@ -642,6 +645,106 @@
 				},
 				{
 					"include": "#enum"
+				},
+				{
+					"include": "#interface"
+				}
+			]
+		},
+		"interface": {
+			"begin": "interface\\s*",
+			"beginCaptures": {
+				"0": {
+					"patterns":[
+						{
+							"include": "#INTERFACE"
+						}
+					]
+				}
+			},
+			"patterns":[
+				{
+					"include": "#interface-declaration"
+				},
+				{
+					"include": "#interface-body"
+				}
+			],
+			"end": "\\}"
+		},
+		"interface-declaration": {
+			"name": "interface-declaration.flexar",
+			"match": "([[:alpha:]_]\\w*){1}([^\\{]*)\\{",
+			"captures": {
+				"1": {
+					"patterns":[
+						{
+							"include": "#OBJECT-NAME"
+						}
+					]
+				},
+				"2": {
+					"patterns":[
+						{
+							"include": "#interface-declaration-extends"
+						}
+					]
+				}
+			}
+		},
+		"interface-declaration-extends": {
+			"name": "interface-declaration-extends.flexar",
+			"patterns":[
+				{
+					"include": "#EXTENDS"
+				},
+				{
+					"include": "#DOT"
+				},
+				{
+					"include": "#COMMA"
+				},
+				{
+					"include": "#OBJECT-NAME"
+				}
+			]
+		},
+		"interface-body": {
+			"name": "interface-body.flexar",
+			"patterns":[
+				{
+					"include": "#interface-body-item"
+				}
+			]
+		},
+		"interface-body-item": {
+			"name": "interface-body-item.flexar",
+			"patterns":[
+				{
+					"include": "#interface-body-item-method"
+				},
+				{
+					"include": "#interface-body-item-property"
+				}
+			]
+		},
+		"interface-body-item-method": {
+			"name": "interface-body-item-method.flexar",
+			"patterns":[
+				{
+					"include": "#FUNC"
+				},
+				{
+					"match": "([[:alpha:]_]\\w*)\\s*\\(",
+					"captures": {
+						"1": {
+							"patterns":[
+								{
+									"include": "#NAME"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
