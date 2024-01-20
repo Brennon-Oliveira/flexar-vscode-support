@@ -184,7 +184,7 @@
 					"name": "storage.type.class"
 				}
 			},
-			"end": "\\}",
+			"end": "\\{",
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.section.class.begin.flexar"
@@ -192,22 +192,16 @@
 			},
 			"patterns":[
 				{
-					"begin": "(\\b(?:export)\\b)?\\s*\\b(interface)\\b\\s+",
-					"end": "\\{",
-					"patterns": [
-						{
-							"name": "storage.modifier",
-							"match": "\\b(?:extends)\\b"
-						},
-						{
-							"name": "entity.name.type.class",
-							"match": "[a-zA-Z]\\w*"
-						},
-						{
-							"name": "punctuation.separator.flexar",
-							"match": "[,|\\.]"
-						}
-					]
+					"name": "storage.modifier",
+					"match": "\\b(?:extends)\\b"
+				},
+				{
+					"name": "entity.name.type.class",
+					"match": "[a-zA-Z]\\w*"
+				},
+				{
+					"name": "punctuation.separator.flexar",
+					"match": "[,|\\.]"
 				}
 			]
 		},
@@ -217,6 +211,9 @@
 			"patterns":[
 				{
 					"include": "#interface-attr"
+				},
+				{
+					"include": "#interface-method"
 				}
 			]
 		},
@@ -231,6 +228,109 @@
 				},
 				"3": {
 					"name": "entity.name.package.go"
+				}
+			}
+		},
+		"interface-method": {
+			"patterns":[
+				
+				{
+					"include": "#func-return-type"
+				},
+				{
+					"include": "#func-def"
+				},
+				{
+					"include": "#func-name"
+				},
+				{
+					"include": "#func-params"
+				},
+				{
+					"include": "#primitive-value"
+				}
+			]
+		},
+		"func-def":{
+			"match": "func",
+			"captures": {
+				"0": {
+					"name": "storage.type.class"
+				}
+			}
+		},
+		"func-name":{
+			"match": "([a-zA-Z]\\w*)",
+			"captures": {
+				"1": {
+					"name": "entity.name.function.flexar"
+				}
+			}
+		},
+		"func-params":{
+			"match": "(\\()([^\\)]*)(\\))",
+			"captures": {
+				"1": {
+					"name": "punctuation.section.class.begin.flexar"
+				},
+				"2": {
+					"patterns": [
+						{
+							"include": "#func-param"
+						}
+					]
+				},
+				"3": {
+					"name": "punctuation.section.class.begin.flexar"
+				}
+			}
+		},
+		"func-return-type": {
+			"match": "(?<=\\s*\\))\\s*([a-zA-Z]\\w*)",
+			"captures": {
+				"1": {
+					"name": "entity.name.type.class"
+				}
+			}
+		},
+		"func-param":{
+			"match": "([a-zA-Z]\\w*)\\s*(:)\\s*([a-zA-Z]\\w*)(?:(=)?([^,\\)]*))?(,)?",
+			"captures": {
+				"1": {
+					"name": "entity.name.type.class"
+				},
+				"2": {
+					"name": "punctuation.separator.flexar"
+				},
+				"3": {
+					"name": "entity.name.package.go"
+				},
+				"4": {
+					"name": "punctuation.separator.flexar"
+				},
+				"5": {
+					"patterns":[
+						{
+							"include": "#primitive-value"
+						}
+					]
+				},
+				"6": {
+					"name": "punctuation.separator.flexar"
+				}
+			}
+		},
+		"primitive-value":{
+			"match": "(=)\\s*((\\d+|dyn)|(\"[^\"]*\"))",
+			"captures": {
+				"1": {
+					"name": "punctuation.separator.flexar"
+				},
+				"3": {
+					"name": "constant.numeric"
+				},
+				"4": {
+					"name": "string"
 				}
 			}
 		},
@@ -388,6 +488,14 @@
 					"match": "[,|\\.]"
 				}
 			]
+		},
+		"types":{
+			"match": "(\\b(?:int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|float|float32|float64|bool|char|string|inf|tuple|map|error|null|any|name)\\b)",
+			"captures": {
+				"1": {
+					"name": "constant.numeric"
+				}
+			}
 		}
 	}
 }
